@@ -6,5 +6,5 @@ Feature: Create application
     Given I am on the login page
     #Then I should see "Log in"
     When I fill logged into the login panel
-    When I am on user page#/users/1
-    Then I should see "Create application form"
+    #When I am on user page#/users/1
+    #Then I should see "Create application form"
