@@ -1,0 +1,10 @@
+<% if current_user_manage? %>
+  <div class="container col-sm-offset-1 col-sm-10">
+    <h3>
+      <%= "Editing #{@article.title}"%>
+    </h3>
+  </div>
+  <%= render "form" %>
+<% else %>
+  <h1 align="center">Sorry, You are not authorized! </h1>
+<% end %>

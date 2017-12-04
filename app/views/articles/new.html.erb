@@ -1,0 +1,6 @@
+<% if current_user_manage? %>
+  <h3 align = "center"> New Article</h3>
+  <%= render "form" %>
+<% else %>
+  <h1 align="center">Sorry, You are not authorized! </h1>
+<% end %>

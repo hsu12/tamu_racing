@@ -1,0 +1,41 @@
+<% if current_user_manage? %>
+  <h1 align="center">Listing all Orders</h1>
+  
+  <form method="get">
+  <div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-2">
+      <label for="applyType" class="col-xs-2">Select type</label>
+      <div class="col-xs-8">
+        <%= select_tag :status, options_for_select(['Placed','Shipped','Canceled'], @checked_status), class: "form-control" %>
+      </div>
+      <div>
+      <%= submit_tag 'Refresh',:id => 'status_submit' %>
+      </div>
+    </div>
+  </div>
+  </form>
+  
+  
+  <% @orders.each do |order| %>
+  <div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+  <div class="well well-lg">
+  <div class="article-title">
+  <%= order.id %>
+  </div>
+  <div class="article-body">
+  <%= order.name %>
+  <%= order.total %>
+   <%= order.status %>
+  </div>
+  <div class="article-actions">
+  <%= link_to "Edit", edit_order_path(order.id)%>
+  <%= link_to "Delete", order, method: :delete, data: { confirm: "Are you sure you want to delete the product?", class: "btn btn-xs btn-danger" } %>
+  </div>
+  </div>
+  </div>
+  </div>
+  <% end %>
+<% else %>
+  <h1 align="center">Sorry, You are not authorized! </h1>
+<% end %>

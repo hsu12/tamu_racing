@@ -1,0 +1,16 @@
+<div align="center">
+  </div>
+  <% @articles.each do |article| %>
+  <div class="row">
+  <div class="col-xs-8 col-xs-offset-2">
+  <div class="well well-lg">
+  <div class="article-title">
+  <h2 align="center"><%= article.title %></h2>
+  </div>
+  <div class="article-body">
+  <%= article.body.html_safe %>
+  </div>
+  </div>
+  </div>
+  </div>
+  <% end %>

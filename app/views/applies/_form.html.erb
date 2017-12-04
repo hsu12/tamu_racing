@@ -1,0 +1,179 @@
+<div class="container col-sm-offset-1">
+  <%= form_for(@apply) do |form| %>
+    <form data-toggle="validator" role="form">
+      <% if @apply.user_id.nil? %>
+        <%= form.text_field :user_id, type: "hidden", value: params[:user_id] %>
+      <% end %>
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-8">
+          <%= form.text_field :name, class: "form-control", placeholder: "Enter Name", type: "text", pattern: "^[_A-z0-9]{1,}$", required: "true", maxlength: "100" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="uin" class="col-sm-2 col-form-label">UIN</label>
+        <div class="col-sm-8">
+          <%= form.text_field :uin, class: "form-control", placeholder: "Enter UIN", type: "text", pattern: "^[0-9]+$", reuquired: "true", maxlength: "15" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cellphone" class="col-sm-2 col-form-label">Cellphone</label>
+        <div class="col-sm-8">
+          <%= form.text_field :cellphone, class: "form-control", placeholder: "Enter cellphone", type: "text", maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">Non TAMU E-mail</label>
+        <div class="col-sm-8">
+          <%= form.text_field :email, class: "form-control", id: "non_tamu_email_id", placeholder: "Enter your non TAMU E-mail", type: "Email" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="course_fall" class="col-sm-2 col-form-label">Courses for Fall</label>
+        <div class="col-sm-8">
+          <%= form.text_field :course_fall, class: "form-control", placeholder: "Enter your courses name in fall semester", type: "text",maxlength: "200" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="course_credit_fall" class="col-sm-2 col-form-label">Courses hours Fall</label>
+        <div class="col-sm-8">
+          <%= form.text_field :course_credit_fall, class: "form-control", placeholder: "Enter your whole course hours for fall", type: "text",pattern: "^[0-9]*$",maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="course_spring" class="col-sm-2 col-form-label">Courses for Spring</label>
+        <div class="col-sm-8">
+          <%= form.text_field :course_spring, class: "form-control", placeholder: "Enter your courses name in spring semester", type: "text",maxlength: "200" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="course_credit_spring" class="col-sm-2 col-form-label">Course hours Spring</label>
+        <div class="col-sm-8">
+          <%= form.text_field :course_credit_spring, class: "form-control", placeholder: "Enter your whole course hours for spring", type: "text",pattern: "^[0-9]*$",maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="major" class="col-sm-2 col-form-label">Major</label>
+        <div class="col-sm-2">
+          <%= form.text_field :major, class: "form-control", placeholder: "Enter your major", type: "text", maxlength: "200" %>
+        </div>
+        <label for="GPA_major_overall" class="col-sm-1 center">GPR</label>
+        <div class="col-sm-2">
+          <%= form.text_field :GPR_overall, class: "form-control", placeholder: "Enter overall GPR", type: "text", pattern: "^[0-9.]*$", maxlength: "6" %>
+        </div>
+        <div class="col-sm-2">
+          <%= form.text_field :GPR_major, class: "form-control", placeholder: "Enter major GPR", type: "text", pattern: "^[0-9.]*$", maxlength: "6" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="employement" class="col-sm-10 col-form-label">Will you be working (employed) during the academic year? If yes, please tell us how many hours you work every week</label>
+      </div>
+      <div class="form-group row">
+        <label for="employement" class="col-sm-2 col-form-label">  </label>  
+        <div class="col-sm-8">
+          <%= form.text_field :employement, class: "form-control ", placeholder: "If you will be working? If yes, how many hours every week?", type: "text", maxlength: "200" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="participate_SAE" class="col-sm-10 col-form-label">Have you participated in any of the following TAMU SAE activities in the past?</label>
+      </div>
+      <div class="form-group row">
+        <label for="flag_participate_SAE", class: "sr-only"></label>
+        <div class="col-sm-2 col-sm-offset-2">
+          <%= form.check_box :flag_participate_SAE %> Formula SAE
+        </div>
+        <label for="participate_SAE" class="col-sm-2 col-form-label">Approximate number of hours</label>
+        <div class="col-sm-4">
+          <%= form.text_field :participate_SAE, class: "form-control ", placeholder: "Approximate number of hours", type: "text", maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="flag_grassroots", class: "sr-only"></label>
+        <div class="col-sm-2 col-sm-offset-2">
+          <%= form.check_box :flag_grassroots %> Grassroots
+        </div>
+        <label for="grassroots" class="col-sm-2 col-form-label">Approximate number of hours</label>
+        <div class="col-sm-4">
+          <%= form.text_field :grassroots, class: "form-control ", placeholder: "Approximate number of hours", type: "text", maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="flag_SAE_officer", class: "sr-only"></label>
+        <div class="col-sm-2  col-sm-offset-2">
+          <%= form.check_box :flag_SAE_officer %> SAE officer
+        </div>
+        <label for="SAE_officer" class="col-sm-2 col-form-label">Approximate number of hours</label>
+        <div class="col-sm-4">
+          <%= form.text_field :SAE_officer, class: "form-control ", placeholder: "Approximate number of hours", type: "text", maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="flag_Other", class: "sr-only"></label>
+        <div class="col-sm-2 col-sm-offset-2">
+          <%= form.check_box :flag_Other %> Other
+        </div>
+        <label for="Other" class="col-sm-2 col-form-label">Approximate number of hours</label>
+        <div class="col-sm-4">
+          <%= form.text_field :Other, class: "form-control ", placeholder: "Approximate number of hours", type: "text", maxlength: "20" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="activities_description" class="col-sm-2 col-form-label">If yes, describe:</label>
+        <div class="col-sm-8">
+          <%= form.text_area :activities_description, class: "form-control", placeholder: "Describe activities you have participated", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="motivation" class="col-sm-10 col-form-label">Why do you want to participate in this project?</label>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <%= form.text_area :motivation, class: "form-control", placeholder: "Describe the motivation you participate in this project", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="hands_on_activities" class="col-sm-10 col-form-label">List any previous experience with any hands-on activities. Give specific activities
+and approximate number of hours of experience.</label>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <%= form.text_area :hands_on_activities, class: "form-control", placeholder: "List any previous experience with any hands-on activities. Give specific activities and approximate number of hours of experience.", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="leadership" class="col-sm-10 col-form-label">Leadership experience (be specific; e.g., what positions of leadership have you held):</label>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <%= form.text_area :leadership, class: "form-control", placeholder: "Leadership experience (be specific; e.g., what positions of leadership have you held):", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="skills" class="col-sm-10 col-form-label">Special skills/strengths that you feel that you would bring to this project (be specific):</label>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-8 col-sm-offset-2">
+          <%= form.text_area :skills, class: "form-control", placeholder: "Special skills/strengths that you feel that you would bring to this project (be specific):", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="preference" class="col-sm-7 col-form-label">Do you have a subteam preference? (Powertrain, Suspension, Chassis, Aero, Electrical)</label>
+        <div class="col-sm-3">
+          <%= form.text_field :preference, class: "form-control", placeholder: "Enter your preference", type: "text", maxlength: "200" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="acknoledgement" class="col-sm-7 col-form-label">Have you read the “Overview of Formula SAE for Interested Students”?(check for yes else for no)</label>
+        <div class="col-sm-2">
+          <%= form.check_box :acknoledgement%> Yes
+        </div>
+      </div>
+      <div class="form-group row center">
+        <div class="col-sm-10">
+          <%= form.submit 'submit', class: "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+      
+    </form>
+  <% end %>
+</div>

@@ -1,0 +1,61 @@
+<h1 align="center">Listing application forms</h1>
+<form method="get" action=applies>
+  <div class="form-group row">
+    <div class="col-xs-6 col-xs-offset-2">
+      <label for="applyType" class="col-xs-2">Select type</label>
+      <div class="col-xs-8">
+        <%= select_tag :applyType, options_for_select(['Seniors','Juniors'], @applyType), class: "form-control" %>
+      </div>
+    </div>
+  </div>
+  <% if @applies!=nil %>
+    <div class="form-group row">
+      <div class="col-xs-6 col-xs-offset-2">
+        <label for="nameSearch" class="col-xs-2">Name Search</label>
+        <div class="col-xs-8">
+          <%= text_field_tag :nameSearch, @nameSearch, class: "form-control" %>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-6 col-xs-offset-2">
+        <label for="viewPreference" class="col-xs-6">Only Show admitted applicants</label>
+        <%= check_box_tag 'viewPreference', 1, @viewPreference == '1' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-6 col-xs-offset-2">
+        <label for="viewRejected" class="col-xs-6">Only show applicants that is rejected</label>
+        <%= check_box_tag 'viewRejected', 1, @viewRejected == '1' %>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-xs-6 col-xs-offset-2">
+        <label for="viewNotEdit" class="col-xs-6">Only Show applicants still not edit</label>
+        <%= check_box_tag 'viewNotEdit', 1, @viewNotEdit == '1' %>
+      </div>
+    </div>
+  <% end %>
+  <div class="form-group row">
+    <div class="col-xs-2 col-xs-offset-8">
+      <button type="submit" name="commit" value="Refresh" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>
+<% if @applies!=nil %>
+  <% @applies.each do |apply| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <div class="well well-lg">
+          <div class="article-title">
+            <% if @applyType=='Seniors' %>
+              <%= link_to apply.name, apply_path(apply) %>
+            <% elsif @applyType=='Juniors' %>
+              <%= link_to apply.name, applya_path(apply) %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,14 @@
+<%= form_for(apply) do |form| %>
+  <form>
+    <div class="container col-sm-offset-1">
+      <div class="form-group row">
+        <div class="col-sm-2">
+          <%= form.select :admission, [['Please Choose..',nil],['Admit',true], ['Reject',false]],{}, disabled: true,class: "form-control"%> admit or not?
+        </div>
+        <div class="col-sm-8">
+          <%= form.text_area :comment, class: "form-control", placeholder: "Comments for this applicant", type: "text", rows:"8", disabled: true %>
+        </div>
+      </div>
+    </div>
+  </form>
+<% end %>

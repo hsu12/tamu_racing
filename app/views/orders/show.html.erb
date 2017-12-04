@@ -1,0 +1,23 @@
+
+<div align = 'center'>
+<h1>Invoice</h1>
+</div>
+<div class="shopping-cart">
+  <%= render "orders/order_detail" %>
+</div>
+  <%= form_for @order do |f| %>
+  <div>
+    <h4 class="text-right">Subtotal: <span style="color: green"><%= number_to_currency @order.subtotal %></span></h4>
+  </div>
+  <div>
+    <h4 class="text-right">Tax: <span style="color: green"><%= number_to_currency @order.subtotal*0.0825 %></span></h4>
+   </div>
+  <div>
+    <h4 class="text-right">Shipping: <span style="color: green"><%= number_to_currency 10 %></span></h4>
+  </div>
+  <div>
+    <h4 class="text-right">Total: <span style="color: green"><%= number_to_currency @order.subtotal*1.0825+10 %></span></h4>
+  </div>
+
+  <% end %>
+</div>

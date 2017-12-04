@@ -1,0 +1,35 @@
+<% if current_user?(@user) %>
+  <h1 align="center">Application Process</h1>
+    <% if (@user.apply0.nil?)&&(@user.apply1.nil?)&&(@user.apply2.nil?) %>
+      <h1 align="center">Please create your application form first </h1>
+    <% else %>
+      <% if !@user.apply0.nil? %>
+        <% if !Apply.find(@user.apply0).admission.nil? %>
+          <h2 align="center">Application form for Seniors status </h2>
+          <%= render 'progressShow', apply: Apply.find(@user.apply0)%>
+        <% else%>
+          <h2 align="center">Your application form for Seniors is still in processing </h2>
+        <% end %>
+      <% end %>
+      
+      <% if !@user.apply1.nil? %>
+        <% if !Applya.find(@user.apply1).admission.nil? %>
+          <h2 align="center">Application form for Juniors status </h2>
+          <%= render 'progressShow', apply: Applya.find(@user.apply1)%>
+        <% else%>
+          <h2 align="center">Your application form for Juniors is still in processing </h2>
+        <% end %>
+      <% end %>
+      
+      <% if !@user.apply2.nil? %>
+        <% if !Apply.find(@user.apply2).admission.nil? %>
+          <h2 align="center">Application form 3 status </h2>
+          <%= render 'progressShow', apply: Apply.find(@user.apply2)%>
+        <% else%>
+          <h2 align="center">Your application form 3 is still in processing </h2>
+        <% end %>
+      <% end %>
+    <% end %>
+<% else %>
+  <h1 align="center">Sorry, You can only view your information </h1>
+<% end %>

@@ -1,0 +1,36 @@
+<div class="shopping-cart">
+  <%= render "order_detail" %>
+</div>
+  <%= form_for @order do |f| %>
+  <div>
+    <h4 class="text-center">Subtotal: <span style="color: green"><%= number_to_currency @order.subtotal %></span></h4>
+  </div>
+  <div>
+    <h4 class="text-center">Tax: <span style="color: green"><%= number_to_currency @order.subtotal*0.0825 %></span></h4>
+   </div>
+  <div>
+    <h4 class="text-center">Shipping: <span style="color: green"><%= number_to_currency 10 %></span></h4>
+  </div>
+  <div>
+    <h4 class="text-center">Total: <span style="color: green"><%= number_to_currency @order.subtotal*1.0825+10 %></span></h4>
+  </div>
+  <div>
+    <h4 class="text-center">Name: <span style="color: green"><%= @order.name %></span></h4>
+  </div>
+    <div>
+    <h4 class="text-center">Email: <span style="color: green"><%= @order.email %></span></h4>
+  </div>
+    <div>
+    <h4 class="text-center">Address: <span style="color: green"><%= @order.address %></span></h4>
+  </div>
+    <div>
+    <h4 class="text-center">Phone: <span style="color: green"><%= @order.phone %></span></h4>
+  </div>
+  <div>
+  <%= f.select :status,  options_for_select([['Placed'], ['Shipped'], ['Canceled']])%>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+  <% end %>
+</div>

@@ -1,0 +1,41 @@
+<h2 align="center">Username: <%= @user.username %></h2>
+
+<div class="well col-xs-8 col-xs-offset-2">
+
+<h4 class="center description"><strong>Email:</strong> <%= simple_format(@user.email) %> </h4>
+
+<hr>
+
+
+<div class="article-actions">
+<% if !(@user.manageFlag == true) %>
+  <% if @apply0.nil? %>
+    <%= link_to "Create application form for Seniors", new_apply_path(:user_id => @user.id), class: "btn btn-xs btn-primary" %>
+  <% else %>
+    <%= link_to "Edit application form for Seniors", edit_apply_path(@apply0), class: "btn btn-xs btn-primary" %>
+    <% if @apply0.admission.nil?%>
+      <%= link_to "Delete application form for Seniors", apply_path(@apply0), method: :delete,
+      data: { confirm: "Are you sure you want to delete the form?"},class: "btn btn-xs btn-danger" %>
+    <% end %>
+  <% end %>
+  <% if @apply1.nil? %>
+    <%= link_to "Create application form for Juniors", new_applya_path(:user_id => @user.id), class: "btn btn-xs btn-primary" %>
+  <% else %>
+    <%= link_to "Edit application form for Juniors", edit_applya_path(@apply1), class: "btn btn-xs btn-primary" %>
+    <% if @apply1.admission.nil?%>
+      <%= link_to "Delete application form for Juniors", applya_path(@apply1), method: :delete,
+      data: { confirm: "Are you sure you want to delete the form?"},class: "btn btn-xs btn-danger" %>
+    <% end %>
+  <% end %>
+  <% if (!@apply0.nil?)||(!@apply1.nil?)||(!@apply2.nil?) %>
+    <%= link_to "View Application Process", checkProgress_path(:id => current_user.id) , class: "btn btn-xs btn-success" %>
+  <% end %>
+<% else %>
+  <%= link_to "Edit news", articles_path, class: "btn btn-xs btn-primary" %>
+  <%= link_to "Manage applicants", applies_path, class: "btn btn-xs btn-success" %>
+  <%= link_to "Manage Users", users_path, class: "btn btn-xs btn-danger" %>
+  <%= link_to "Manage Orders", orders_path, class: "btn btn-xs btn-danger" %>
+<% end %>
+</div>
+
+</div>

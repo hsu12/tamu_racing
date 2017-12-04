@@ -1,0 +1,79 @@
+$navbar-default-bg: #500000;
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+#logo {
+  float: left;
+  font-size:1.7em;
+  color:#ffffff;
+  text-tranform:upercase;
+  letter-spacing:-1px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: #000000;
+  text-decoration:none;
+}
+
+.center {
+  text-align:center;
+}
+
+
+img.resize {
+  width:200px;
+  height:40px;
+}
+
+#sign_up {
+  background-color:#500000;
+  margin-bottom:30px;
+  letter-spacing:-1px;
+}
+
+.navbar{
+  margin-bottom:0px;
+  padding:0;
+  color:#fff;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+
+#style_image {
+    padding: 0;
+    display: block;
+    margin: 0px auto;
+    max-height: 100%;
+    max-width: 80%;
+}
+
+.jumbotron {
+  background-color: rgba(0,0,0,0.0);
+}
+
+.jumbotron h1 {
+  color: #fff;
+  text-align:center;
+  margin-top:30px;
+  letter-spacing:-1px;
+  font-weight:bold;
+}
+.carousel {
+    position:absolute;
+    z-index: -99;
+}
+
+.carousel-indicators{
+    bottom:100px;
+}
+.carousel-inner > .item >img{
+  margin: auto;
+  width : 80%;
+  height: 80%;
+  max-height : 1500px;
+
+}
+

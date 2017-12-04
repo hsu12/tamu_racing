@@ -1,0 +1,64 @@
+<div class="container col-sm-offset-1">
+  <%= form_for(@applya) do |form| %>
+    <form data-toggle="validator" role="form">
+      <% if @applya.user_id.nil? %>
+        <%= form.text_field :user_id, type: "hidden", value: params[:user_id] %>
+      <% end %>
+      <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-8">
+          <%= form.text_field :name, class: "form-control", placeholder: "Enter Name", type: "text", pattern: "^[_A-z0-9]{1,}$", required: "true", maxlength: "100" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="uin" class="col-sm-2 col-form-label">UIN</label>
+        <div class="col-sm-8">
+          <%= form.text_field :uin, class: "form-control", placeholder: "Enter UIN", type: "text", pattern: "^[0-9]*$", required: "true", maxlength: "100" %>
+        </div>
+      </div>
+    
+      <div class="form-group row">
+        <label for="email" class="col-sm-2 col-form-label">E-mail</label>
+        <div class="col-sm-8">
+          <%= form.text_field :email, class: "form-control", id: "email_id", placeholder: "Enter your E-mail", type: "Email", maxlength: "100" %>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="course_401" class="col-sm-2 col-form-label">course 401</label>
+        <div class="col-sm-8">
+          <%= form.text_field :course_401, class: "form-control", placeholder: "When do you plan to take course 401", type: "text", maxlength: "100" %>
+        </div>
+      </div>
+      
+      
+      <div class="form-group row">
+        <label for="FSAE_interest" class="col-sm-2 col-form-label">FSAE Intereste:</label>
+        <div class="col-sm-8">
+          <%= form.text_area :FSAE_interest, class: "form-control", placeholder: "Describe what interests you in the FSAE program", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="FSAE_experience" class="col-sm-2 col-form-label">FSAE Experience:</label>
+        <div class="col-sm-8">
+          <%= form.text_area :FSAE_experience, class: "form-control", placeholder: "What experience do you have with automobiles, FSAE, or the SAE general club?", type: "text", rows:"5", maxlength: "2000" %>
+        </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="sub_team" class="col-sm-2 col-form-label">sub team preference</label>
+        <div class="col-sm-8">
+          <%= form.text_area :sub_team, class: "form-control", id: "email_id", placeholder: "List the sub-teams in order of highest to lowest preference. They are Aerodynamics, Electrical, Chassis, Suspension, Powertrain.", type: "text", rows:"2", maxlength: "1000" %>
+        </div>
+      </div>
+     
+      <div class="form-group row center">
+        <div class="col-sm-10">
+          <%= form.submit 'submit', class: "btn btn-primary btn-lg" %>
+        </div>
+      </div>
+
+      
+    </form>
+  <% end %>
+</div>
